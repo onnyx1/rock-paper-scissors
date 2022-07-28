@@ -5,110 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
-    <script>
-      function getComputerChoice() {
-        const randomNumber = Math.floor(Math.random() * 3);
-
-        switch (randomNumber) {
-          case 0:
-            return "rock";
-            break;
-          case 1:
-            return "paper";
-            break;
-          case 2:
-            return "scissors";
-            break;
-        }
-      }
-//test
-      function playRound(playerSelection, computerSelection) {
-        playerSelection = playerSelection.toString().toLowerCase();
-
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
-          if (playerSelection === "rock") {
-            switch (computerSelection) {
-              case "paper":
-                return "You Lose! Paper beats Rock.";
-                break;
-
-              case "rock":
-                return "Tie! Rock ties with Rock.";
-                break;
-
-              case "scissors":
-                return "You Win! Rock beats Scissors.";
-                break;
-            }
-          } else if (playerSelection === "paper") {
-            switch (computerSelection) {
-              case "paper":
-                return "Tie! Paper ties with Paper.";
-                break;
-
-              case "rock":
-                return "You Win! Paper beats Rock.";
-                break;
-
-              case "scissors":
-                return "You Lose! Scissors beats Paper.";
-                break;
-            }
-          } else {
-            switch (computerSelection) {
-              case "paper":
-                return "You Win! Scissors beats Paper.";
-                break;
-
-              case "rock":
-                return "You Lose! Rock beats Scissors.";
-                break;
-
-              case "scissors":
-                return "Tie! Scissors ties with Scissors.";
-                break;
-            }
-          }
-        } else {
-          return "Not a valid input.";
-        }
-      }
-
-      function game() {
-        let playerScore = 0;
-        let computerScore = 0;
-
-        for (let i = 0; i < 5; i++) {
-          let playerInput = prompt("Choose rock, paper, or scissors.");
-          let computerInput = getComputerChoice();
-          let results = playRound(playerInput, computerInput);
-
-          while (results === "Not a valid input.") {
-            playerInput = prompt("Not a valid input.\nChoose rock, paper, or scissors.");
-            results = playRound(playerInput, computerInput);
-          }
-
-          if (results.indexOf("Win") != -1) {
-            playerScore++;
-          } else if (results.indexOf("Lose") != -1) {
-            computerScore++;
-          }
-
-          console.log(`Player: ${playerInput}\nComputer: ${computerInput}\n`);
-          console.log(results);
-          console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-        }
-
-        if (playerScore > computerScore) {
-          console.log("Player Wins");
-        } else if (playerScore < computerScore) {
-          console.log("Computer Wins");
-        } else {
-          console.log("Tie!");
-        }
-      }
-    </script>
+    <script src="https://kit.fontawesome.com/9a4009cecb.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css" />
+    <script src = "script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+
+    <div class = "container">
+
+<h1>Rock Paper Scissors</h1>
+<h2>First to 5 Wins</h2>
+
+    <div class = "main row">
+      <div class = "player-card">
+        <p>Player</p>
+        <p class = "player-score">Score: </p>
+
+        <div class = "button row">
+        <button class = "rock"><i class="fa-solid fa-hand-fist fa-3x"></i></button>
+        <button class = "paper"><i class="fa-solid fa-hand fa-3x"></i></button>
+        <button class = "scissors"><i class="fa-solid fa-hand-scissors fa-3x"></i></button>
+      </div>
+    </div>
+      <div class = "computer-card">
+        <p>Computer</p>
+        <p class = "computer-score">Score: </p>
+        <div class = "button row">
+
+        <button><i class="fa-solid fa-hand-fist fa-3x"></i></button>
+        <button><i class="fa-solid fa-hand fa-3x"></i></button>
+        <button><i class="fa-solid fa-hand-scissors fa-3x"></i></button>
+        </div>
+        </div>
+      </div>
+
+
+<div class = "output">
+<h3>Output</h3>
+</div>
+
+    </div>
+
+
+</div>
+  </body>
 </html>
