@@ -87,10 +87,17 @@ p {
   margin-bottom: 0;
 }
 
-button:hover {
-  border: 2px solid gray;
+.player-card button:hover {
   transform: scale(1.1);
 }
+
+.button-style {
+  background-color: yellow;
+  transform: scale(1.1);
+}
+
+
+
 
 h3 {
   text-decoration: underline;

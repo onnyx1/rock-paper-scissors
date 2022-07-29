@@ -77,28 +77,54 @@ function game(results) {
     cScore.textContent = `Score : ${computerScore}`;
   }
 
-  if (playerScore > computerScore) {
-    console.log("Player Wins");
-  } else if (playerScore < computerScore) {
-    console.log("Computer Wins");
-  } else {
-    console.log("Tie!");
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore > computerScore) {
+      const p = document.createElement("p");
+      p.textContent = "Player Wins!";
+      div.appendChild(p);
+    } else if (playerScore < computerScore) {
+      const p = document.createElement("p");
+      p.textContent = "Computer Wins!";
+      div.appendChild(p);
+    }
   }
 }
 
 const div = document.querySelector(".output");
-
 const buttons = document.querySelectorAll(".player-card button");
+const computerButtons = document.querySelectorAll(".computer-card button");
 
 let playerScore = 0;
 let computerScore = 0;
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", function () {
+
+
+    if (playerScore === 5 || computerScore === 5) {
+      const pScore = document.querySelector(".player-score");
+      const cScore = document.querySelector(".computer-score");
+      playerScore = 0;
+      computerScore = 0;
+
+      div.innerHTML = "<h3>Output</h3>";
+      pScore.textContent = `Score : ${playerScore}`;
+      cScore.textContent = `Score : ${computerScore}`;
+    }
+
+    buttons.forEach((value) => value.classList.remove("button-style"));
+    computerButtons.forEach((value) => value.classList.remove("button-style"));
+
     const p = document.createElement("p");
-    let result = playRound(btn.className, getComputerChoice());
+    const choice = getComputerChoice();
+    const result = playRound(btn.className, choice);
     p.textContent = result;
     div.appendChild(p);
+
+    this.classList.add("button-style");
+    const computerButton = document.querySelector(`.computer-card .${choice}`);
+    computerButton.classList.add("button-style");
+
     game(result);
   });
 });
